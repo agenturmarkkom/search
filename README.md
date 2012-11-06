@@ -49,7 +49,9 @@ Create Crawler configuration via List view
 ```typoscript
 #INDEXED SEARCH ENGINE - PLUGIN
 config.index_enable = 1
-plugin.tx_indexedsearch.search.rootPidList = 1
+#plugin.tx_indexedsearch.search.rootPidList = 1 #hier geht nur der Wert 1
+##Suche begfrenzen ebene1 pid 174
+plugin.tx_indexedsearch._DEFAULT_PI_VARS.sections=rl1_174
 ```
 
 ###Constants
