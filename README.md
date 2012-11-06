@@ -1,2 +1,68 @@
-search
+Search
 ======
+
+##Extensions
+
+- workspaces
+- indexed_search
+- crawler
+
+##Crawler Extension Configuration
+
+### Step one
+
+Create user "_cli_crawler" without a group
+
+### Step two
+
+Create a sql file like
+
+```sql
+TRUNCATE index_fulltext;
+TRUNCATE index_grlist;
+TRUNCATE index_phash;
+TRUNCATE index_rel;
+TRUNCATE index_section;
+TRUNCATE index_words;
+TRUNCATE tx_crawler_queue;
+```
+### Step three
+
+Create a bash script like
+
+```bash
+#! /bin/bash
+mysql -udb******_*** -p*********** -hmysql5.******.de db******_*** --force < /kunden/ ... PATH ... /typo3-clear-index.sql;
+
+php53 /kunden/ ... PATH ... /typo3/cli_dispatch.phpsh crawler_im 1 -d 99 -conf de -o queue
+php53 /kunden/ ... PATH ... /typo3/cli_dispatch.phpsh crawler 1 -d 99 -conf de 
+```
+
+###Step four
+
+Create Crawler configuration via List view
+
+##TYPO3 Configuration
+
+###Setup
+
+```typoscript
+#INDEXED SEARCH ENGINE - PLUGIN
+config.index_enable = 1
+plugin.tx_indexedsearch.search.rootPidList = 1
+```
+
+###Constants
+
+```typoscript
+#Nothing to do here
+```
+
+##indexed_search Extension Configuration
+
+Check the following Option
+
+```php
+Disable Indexing in Frontend[disableFrontendIndexing]
+By default pages are indexed during viewing of pages in the frontend. You can disable this features so indexing of pages is only initiated through the backend page crawler.
+```
