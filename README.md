@@ -68,3 +68,16 @@ Check the following Option
 Disable Indexing in Frontend[disableFrontendIndexing]
 By default pages are indexed during viewing of pages in the frontend. You can disable this features so indexing of pages is only initiated through the backend page crawler.
 ```
+
+##Known Bug
+
+Change in line 1723 (error message will give you the actual line)
+
+```php
+t3lib_div::view_array
+```
+to
+
+```php
+t3lib_utility_Debug::viewArray
+```
