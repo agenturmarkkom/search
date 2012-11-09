@@ -69,7 +69,11 @@ Disable Indexing in Frontend[disableFrontendIndexing]
 By default pages are indexed during viewing of pages in the frontend. You can disable this features so indexing of pages is only initiated through the backend page crawler.
 ```
 
-##Known Bug
+##Known Bug in TYPO3 4.7.x
+
+```php
+Fatal error: Call to undefined method t3lib_div::view_array() in /yourPath/typo3conf/ext/crawler/class.tx_crawler_lib.php on line 1723
+```
 
 Change in line 1723 (error message will give you the actual line)
 
